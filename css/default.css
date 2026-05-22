@@ -62,9 +62,49 @@ div#content {
   margin: 15px 0;
 }
 
-div.separateli li {
+div.separateli li,
+.separateli li {
   border-bottom: 1px solid #7f7f7f4a;
   padding: 8px 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Publication filter bar */
+.pub-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 20px;
+}
+
+.filter-btn {
+  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  color: #527bbd;
+  background: #fff;
+  border: 1.5px solid #527bbd;
+  border-radius: 20px;
+  padding: 6px 14px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  min-height: 36px;
+}
+
+.filter-btn:hover {
+  background: #eaf1fa;
+}
+
+.filter-btn.active {
+  background: #527bbd;
+  color: #fff;
+}
+
+.filter-btn:focus-visible {
+  outline: 2px solid #007B93;
+  outline-offset: 2px;
 }
 
 div.colorli li {
@@ -171,24 +211,75 @@ div.info {
   font-style: normal;
 }
 
+/* Make images fluid by default */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  body {
+    font-size: 15px;
+    padding: 0 12px;
+  }
+
   div#header {
     flex-direction: column;
     text-align: center;
     align-items: center;
     padding-bottom: 15px;
+    gap: 10px;
   }
-  
+
   div#header #navigation {
     justify-content: center;
+    gap: 18px;
   }
-  
+
+  div#header #navigation a {
+    font-size: 16px;
+    padding: 6px 4px; /* larger touch target */
+  }
+
+  div#logo a {
+    font-size: 17px;
+  }
+
   .alignright {
     float: none;
     display: block;
     margin: 0 auto;
     text-align: center;
     padding: 15px 0;
+  }
+
+  h1 { font-size: 21px; }
+  h2 { font-size: 18px; }
+
+  .pub-filter {
+    gap: 6px;
+  }
+
+  .filter-btn {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  div.separateli li,
+  .separateli li {
+    padding: 10px 0;
+  }
+}
+
+@media (max-width: 420px) {
+  div#header #navigation {
+    gap: 14px;
+  }
+  .pub-filter {
+    justify-content: stretch;
+  }
+  .filter-btn {
+    flex: 1 1 auto;
   }
 }
